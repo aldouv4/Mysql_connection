@@ -4,7 +4,7 @@ import pandas as pd
 
 
 class Connection_mysql :
-    ''' This class defines a way to connect to MySQL database'''
+    ''' This class defines a way to connect to MySQL database using sqlalchemy'''
 #------------------------------------------------------------------------------------------------------------------------------------------------       
    
     def __init__ ( self , user , password  , host , database ) :
@@ -70,7 +70,7 @@ class Connection_mysql :
     def delete_Table ( self, table_name ): 
         '''Deletes table from database
         table_name = str, table to be dropped'''
-        
+
         #Execute query to drop the selected table, add statement 'if exists' 
         db_connection.execute ( '''DROP TABLE IF EXISTS ''' + table_name  )
  #------------------------------------------------------------------------------------------------------------------------------------------------
