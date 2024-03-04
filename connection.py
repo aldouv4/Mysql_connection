@@ -23,7 +23,7 @@ class Connection_mysql :
         table_name = table_name
         query_extract_data = f'SELECT * FROM {table_name}' '''
 
-        df = pd.sql_read ( query , self.db_connection )
+        df = pd.sql_read ( query_extract_data , self.db_connection )
 
         return df
 
