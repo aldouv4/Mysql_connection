@@ -1,5 +1,6 @@
 from sqlalchemy import create_engine
 import mysql.connector as mysqlc
+import pandas as pd
 
 
 class Connection_mysql :
@@ -16,6 +17,16 @@ class Connection_mysql :
         # Set the variable db_connection as an attribute 
 
         self.db_connection = create_engine(db_connection_str)
+
+    def read_data ( self , query_extract_data ) :
+    '''Creates a pandas DataFrame from MySQL database table. Example
+        table_name = table_name
+        query_extract_data = f'SELECT * FROM {table_name}' '''
+
+        df = pd.sql_read ( query , self.db_connection )
+
+        return df
+
 
         
 
