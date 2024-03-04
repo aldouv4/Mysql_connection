@@ -8,7 +8,7 @@ class Connection_mysql :
 #------------------------------------------------------------------------------------------------------------------------------------------------       
    
     def __init__ ( self , user , password  , host , database ) :
-        '''Give the necessary parameters to acces to database including :
+        '''Give the necessary parameters to database access including :
         user name, password, url or ip for the database host and the database name'''
 
         #Create string for the engine        
