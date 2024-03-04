@@ -11,12 +11,10 @@ class Connection_mysql :
         '''Give the necessary parameters to acces to database including :
         user name, password, url or ip for the database host and the database name'''
 
-        #Create string for the engine
-        
+        #Create string for the engine        
         db_connection_str ='mysql+pymysql://'+ user+ ':' + password + '@' + host + '/' + database 
 
         # Set the variable db_connection as an attribute 
-
         self.db_connection = create_engine(db_connection_str)
 #------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -25,6 +23,7 @@ class Connection_mysql :
         table_name = table_name
         query_extract_data = f'SELECT * FROM {table_name}' '''
 
+        #Use pandas to extract the selected table's information to create a DataFrame
         df = pd.sql_read ( query_extract_data , self.db_connection )
 
         return df
@@ -35,11 +34,11 @@ class Connection_mysql :
         selected_table = str, database table to delet rows
         conditional_column = str , column containing the conditional statement 
         condition = str, conditional value or values selected to drop from the table '''
+
         #Set the query statement for rows deletion
         query_delete = '''DELETE FROM ''' + selected_table + ''' WHERE ''' + conditional_column + ''' IN ''' + f'(condition)'
 
         #Execute query
-
         self.db_connection.execute ( query_delete )
 #------------------------------------------------------------------------------------------------------------------------------------------------
            
@@ -48,6 +47,7 @@ class Connection_mysql :
         df= pd DataFrame, contains the rows to upload
         selected_table = str, MySQL table name to upload values '''
 
+        #Use pandas method 'to_sql' to load rows to the selected table
         df.to_sql ( 
             con = self.db_connection,  #Define the connection
             name = selected_table ,    #Defines selected table
