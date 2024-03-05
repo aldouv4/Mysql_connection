@@ -1,5 +1,4 @@
 from sqlalchemy import create_engine
-import mysql.connector as mysqlc
 import pandas as pd
 
 
